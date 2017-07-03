@@ -1,0 +1,38 @@
+{
+  "name": "jewel-katalog",
+  "version": "1.0.0",
+  "description": "For family",
+  "main": "index.js",
+  "scripts": {
+    "test": "-wtf",
+    "start": "NODE_PATH=./src nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SlepoRus/jewel-katalog.git"
+  },
+  "keywords": [
+    "jewel",
+    "nodejs",
+    "react",
+    "mongoose",
+    "mongodb"
+  ],
+  "author": "Konstantin Tulikov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SlepoRus/jewel-katalog/issues"
+  },
+  "homepage": "https://github.com/SlepoRus/jewel-katalog#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
+    "express": "^4.15.3",
+    "log4js": "^1.1.1",
+    "mongoose": "^4.11.0",
+    "morgan": "^1.8.2",
+    "mysql": "^2.13.0",
+    "nodemon": "^1.11.0",
+    "winston": "^2.3.1"
+  }
+}
