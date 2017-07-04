@@ -1,0 +1,35 @@
+@header-font: 'Merriweather', serif;
+@color_menu_border: #008899;
+html {
+  font-family: @header-font;
+}
+.menu_padding (@pad) {
+  padding:15px;
+  padding-left: @pad;
+  padding-right: @pad;
+}
+header {
+  text-align: center;
+  padding-bottom: 20px;
+  a {
+    color:black;
+  }
+  div {
+    display:inline-block;
+    .menu_padding(2%);
+    vertical-align: top;
+    cursor:pointer;
+    border-bottom:2px solid #FFF;
+    &:hover {
+      transition: .1s ease;
+      color: #888;
+    }
+
+  }
+  h1 {
+    font-weight: 100;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #666;
+  }
+  border-bottom: 1px solid #666;
+}

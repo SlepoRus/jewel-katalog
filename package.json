@@ -3,9 +3,17 @@
   "version": "1.0.0",
   "description": "For family",
   "main": "index.js",
+  "babel": {
+    "presets": [
+      "react",
+      "es2015"
+    ]
+  },
   "scripts": {
-    "test": "-wtf",
-    "start": "NODE_PATH=./src nodemon server.js"
+    "start": "NODE_PATH=./src nodemon server.js",
+    "build": "webpack -p --progress",
+    "webpack-devserver": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8050 --host 0.0.0.0",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -25,14 +33,45 @@
   },
   "homepage": "https://github.com/SlepoRus/jewel-katalog#readme",
   "dependencies": {
+    "autoprefixer": "^7.1.1",
+    "autoprefixer-loader": "^3.2.0",
+    "axios": "^0.16.2",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "body-parser": "^1.17.2",
+    "clean-webpack-plugin": "^0.1.16",
+    "compression-webpack-plugin": "^0.4.0",
     "cors": "^2.8.3",
+    "css-loader": "^0.28.4",
     "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.4",
     "log4js": "^1.1.1",
     "mongoose": "^4.11.0",
     "morgan": "^1.8.2",
     "mysql": "^2.13.0",
     "nodemon": "^1.11.0",
+    "postcss-load-config": "^1.2.0",
+    "postcss-loader": "^2.0.6",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-limited-infinite-scroll": "^2.0.4",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.1",
+    "react-router-bootstrap": "^0.24.2",
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.7.1",
+    "redux-infinite-scroll": "^1.0.9",
+    "redux-thunk": "^2.2.0",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0",
     "winston": "^2.3.1"
   }
 }

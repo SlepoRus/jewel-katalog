@@ -1,0 +1,28 @@
+@padding_catalog: 3px;
+.catalog-elem {
+  .catalog-images {
+    height:260px;
+  }
+  min-height: 280px;
+  display:inline-block;
+  vertical-align: top;
+  padding-bottom:10px;
+  border:1px solid #FFF;
+  cursor:pointer;
+  img {
+    vertical-align: middle;
+  }
+  p {
+    vertical-align: bottom;
+  }
+  &:hover {
+    border:1px solid #AAA;
+    transition:.1s ease;
+  }
+}
+.catalog {
+  padding-top:20px;
+  padding-left:@padding_catalog;
+  padding-right:@padding_catalog;
+  text-align: center;
+}

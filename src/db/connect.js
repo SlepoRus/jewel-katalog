@@ -2,10 +2,15 @@ var MongoDB = require('../config/connect.json').MongoDB.URL;
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 mongoose.model('Jewelry',new Schema({
-  Article: String,
+  Article: {type:String, index:true},
   Pare: [{}],
   Range: [{}],
   MainLink: {},
+}));
+mongoose.model('Users',new Schema({
+  Login: {type:String, index:{unique:true}},
+  Password: String,
+  ruleLvl: [{}],
 }));
 module.exports =
   function connect(callback) {
