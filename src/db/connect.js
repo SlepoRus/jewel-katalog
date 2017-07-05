@@ -10,7 +10,7 @@ mongoose.model('Jewelry',new Schema({
 mongoose.model('Users',new Schema({
   Login: {type:String, index:{unique:true}},
   Password: String,
-  ruleLvl: [{}],
+  ruleLvl: {},
 }));
 module.exports =
   function connect(callback) {

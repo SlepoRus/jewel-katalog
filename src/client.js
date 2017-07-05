@@ -5,12 +5,14 @@ import App from './components/App';
 import configureStore from './redux/configureStore';
 import Catalog from './components/Catalog';
 import BrowserRouter from 'react-router-dom/BrowserRouter';
-var store = configureStore();
+
+const initialState = window.REDUX_INITIAL_STATE || {};
+var store = configureStore(initialState);
 
 const component = (
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <App auth={store.getState().auth}/>
     </BrowserRouter>
   </Provider>
 )

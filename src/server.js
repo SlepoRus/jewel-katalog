@@ -38,7 +38,7 @@ app.use(session({
   secret: 'asdfasdfasdfwqefqwefsadxzvczx3151235621354esafsdfcbxcvbsaf23151236123SAFDSFadf1235312',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false }
+  cookie: { secure: false,maxAge: 60000 }
 }))
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
@@ -46,9 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'jewelimg')));
 const pathfix = __dirname.substr(0,__dirname.length-4)
 app.use('/jewelImg', express.static(pathfix + '/jewelImg'))
-app.use('/public', express.static(pathfix + '/public'),function() {
-  logger.error('получен лещь в виде аватара по серверу');
-});
+app.use('/public', express.static(pathfix + '/public'));
 fs.readdirSync('./src/controller').forEach(function (file) {
   if(file.substr(-3) == '.js') {
       route = require('./controller/' + file);
@@ -57,20 +55,28 @@ fs.readdirSync('./src/controller').forEach(function (file) {
 });
 app.use((req,res) => {
   var context = {};
-  var store = configureStore();
+  var auth = {};
+  if (req.session.ssid) {
+    auth = {
+      ssid: req.session.ssid,
+      rules: req.session.rules,
+      login: req.session.Login,
+    }
+  }
+  var store = configureStore(auth);
   const componentHTML = ReactDOMServer.renderToString(
     <Provider store={store}>
         <StaticRouter
           location={req.url}
           context={context}
         >
-        <App />
+        <App auth={auth}/>
         </StaticRouter>
     </Provider>
     );
-  res.end(renderHTML(componentHTML));
+  res.end(renderHTML(componentHTML,auth));
 })
-function renderHTML(componentHTML) {
+function renderHTML(componentHTML,auth) {
 
   return `
     <!DOCTYPE html>
@@ -83,7 +89,7 @@ function renderHTML(componentHTML) {
           <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
           <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
           <script type="application/javascript">
-              window.REDUX_INITIAL_STATE = ${JSON.stringify({})};
+              window.REDUX_INITIAL_STATE = ${JSON.stringify({auth})};
 
           </script>
       </head>

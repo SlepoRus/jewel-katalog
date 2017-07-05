@@ -1,0 +1,60 @@
+@button_color_success: #555;
+@button_color_warning: #900;
+.input-label {
+  display:block;
+  text-align: left;
+}
+.input-form {
+  display:block;
+  margin:auto;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  margin-top:15px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border-bottom: solid 2px #c9c9c9;
+  transition: border 0.3s;
+    &:focus {
+      border-bottom: solid 2px #969696;
+    }
+  @media (max-width: 540px) {
+    width:100%;
+  }
+}
+.success {
+   background-color: @button_color_success;
+   &:hover {
+     outline:none;
+     background-color: darken(@button_color_success, 10%);
+   }
+   &:active {
+     background-color: darken(@button_color_success, 15%);
+   }
+ }
+.warning {
+   background-color: @button_color_warning;
+   &:hover {
+     outline:none;
+     background-color: darken(@button_color_warning, 10%);
+   }
+   &:active {
+     background-color: darken(@button_color_warning, 15%);
+   }
+ }
+.jewel-button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor:pointer;
+    &:focus {
+      outline:none;
+    }
+}
+textarea:focus, input:focus{
+    outline: none;
+}

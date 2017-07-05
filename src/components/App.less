@@ -1,12 +1,19 @@
-@header-font: 'Merriweather', serif;
+@header-font: 'Lora', serif;
 @color_menu_border: #008899;
 html {
   font-family: @header-font;
 }
+body {
+  @media (max-width: 768px) {
+    margin:0px;
+  }
+}
+
 .menu_padding (@pad) {
   padding:15px;
   padding-left: @pad;
   padding-right: @pad;
+
 }
 header {
   text-align: center;

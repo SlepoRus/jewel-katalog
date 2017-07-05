@@ -1,11 +1,10 @@
-var jewelry = require('../models').Jewelry;
+var model = require('../models').Jewelry;
 
 module.exports.controller = function(app) {
   app.route('/jewelry/')
     .get((req,res) => {
-      const offset = req.param('offset')
-
-      jewelry.find(null,offset).then((val) => {
+      const offset = req.query.offset;
+      model.find(null,offset).then((val) => {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(val));
       }).catch((err) => {
@@ -14,10 +13,12 @@ module.exports.controller = function(app) {
     })
   app.route('/jewelry/:id')
     .get((req,res) => {
-      const { offset, id } = req.params;
+      const { id } = req.params;
+      const offset = req.query.offset;
         var regex = new RegExp(".*" + id + ".*")
-        jewelry.find(regex,offset).then((val) => {
-          res.end(val.toString());
+        model.find(regex,offset).then((val) => {
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify(val));
         }).catch((err) => {
           console.log(err);
         })

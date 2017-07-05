@@ -1,7 +1,7 @@
 @padding_catalog: 3px;
 .catalog-elem {
   .catalog-images {
-    height:260px;
+    height:220px;
   }
   min-height: 280px;
   display:inline-block;
@@ -13,6 +13,7 @@
     vertical-align: middle;
   }
   p {
+    padding-top:15px;
     vertical-align: bottom;
   }
   &:hover {
@@ -25,4 +26,11 @@
   padding-left:@padding_catalog;
   padding-right:@padding_catalog;
   text-align: center;
+}
+.catalog-search {
+  width:50%;
+  margin:auto;
+  @media (max-width: 768px) {
+    width:100%;
+  }
 }

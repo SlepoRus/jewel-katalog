@@ -69,6 +69,7 @@
     "redux": "^3.7.1",
     "redux-infinite-scroll": "^1.0.9",
     "redux-thunk": "^2.2.0",
+    "sha256": "^0.2.0",
     "style-loader": "^0.18.2",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0",

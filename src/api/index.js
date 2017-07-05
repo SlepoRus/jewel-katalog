@@ -3,11 +3,12 @@ module.exports.Jewelry = {
   read(data) {
     var url = '';
     var { id, offset } = data;
-    if (id === undefined) id = '';
+    if (!id) id = '';
 
     if (offset) {
         url = `?offset=${offset}`;
     }
+
     return axios.get(`/jewelry/${id}${url}`)
   },
   create(data) {
@@ -22,9 +23,12 @@ module.exports.Jewelry = {
 }
 module.exports.Auth = {
   register(data) {
-    return axios.post(`/auth/`, data);
+    return axios.post(`/auth/register`, data);
   },
   auth(data) {
-    return axios.post(`/auth/`, data);
+    return axios.post(`/auth/login`, data);
   },
+  logout(data) {
+    return axios.post(`/auth/logout`);
+  }
 }

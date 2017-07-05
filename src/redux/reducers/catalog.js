@@ -1,8 +1,6 @@
 import { CATALOG_REQUEST_STARTED,CATALOG_REQUEST_FINISHED,CATALOG_REQUEST_ERROR } from '../actions/catalog';
 const initialState = {
-  errors: null,
-  loading: false,
-  catalog: '',
+  search_text: '',
 };
 
 export default function (state = initialState, action) {

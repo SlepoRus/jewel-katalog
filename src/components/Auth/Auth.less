@@ -1,0 +1,35 @@
+
+.login-main {
+  margin:auto;
+  margin-top:40px;
+  min-height:300px;
+  width: 400px;
+  text-align: center;
+  @media (max-width: 768px) {
+    width: 100%!important;
+  }
+  h3 {
+    text-align: center;
+    border-bottom:1px solid gray;
+    padding-bottom: 10px;
+  }
+  .login-change {
+    text-align: center;
+    padding:25px;
+    a  {
+      text-decoration: none;
+      color:black!important;
+      width:50px;
+      padding-left:15px;
+      padding-right:15px;
+    }
+    & span:hover {
+      transition: .1s ease;
+      color: #888;
+    }
+    .active span {
+      border-bottom:1px solid #444;
+      color: #888;
+    }
+  }
+}

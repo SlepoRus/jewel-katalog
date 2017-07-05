@@ -2,6 +2,8 @@ import React from 'react';
 import './Catalog.less';
 import PropTypes from 'prop-types';
 import InfiniteScroll from 'redux-infinite-scroll';
+import { Input } from '../lib';
+import { connect } from 'react-redux';
 var api = require('../../api').Jewelry;
 const propTypes = {
   dispatch: PropTypes.func.isRequired,
@@ -18,15 +20,16 @@ class Catalog extends React.Component {
       catalog: [],
       offset: 0,
       hasMore: true,
+      search_text: this.props.search_text,
     }
     this._loadMore = this._loadMore.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
   _loadMore() {
-    var { catalog, offset } = this.state;
+    var { catalog, offset, value, search_text } = this.state;
     const OFFSET = 60;
     this.setState({ loadingMore: true });
-    setTimeout(() => {
-      api.read({offset:offset}).then((val) => {
+      api.read({id:search_text, offset:offset}).then((val) => {
         if (val.data.length<1) {
           this.setState({ hasMore: false })
         }
@@ -34,17 +37,23 @@ class Catalog extends React.Component {
       }).catch((err) => {
         console.log(err);
       });
-    },500)
   }
   _renderCatalog() {
     return this.state.catalog && this.state.catalog.map((val) => {
-      return <Elem {...val} />
+      return <Elem {...val} {...this.props} />
     });
   }
+  handleSearch(e) {
+    const { value } = e.target;
+    this.setState({ search_text: value , catalog:[], offset: 0, hasMore:true })
+  }
   render() {
-    const { loading, error, catalog, offset } = this.props;
+    const { search_text,loadingMore } = this.state;
     return (
       <div className={'catalog'}>
+        <div className={'catalog-search'}>
+          <Input placeholder={"Поиск..."} onChange={this.handleSearch} value={search_text}/>
+        </div>
         <InfiniteScroll
             loadingMore = {this.state.loadingMore}
             hasMore = {this.state.hasMore}
@@ -59,8 +68,9 @@ class Catalog extends React.Component {
 Catalog.PropTypes = propTypes;
 
 function mapStateToProps(state) {
-  const { loading, errors, catalog, offset  } = state.catalog;
-  return { loading, errors, catalog, offset };
+  const { rules } = state.auth;
+  const { search_text } = state.catalog;
+  return { rules,search_text };
 }
 const Elem = (props) => {
   if (props.MainLink !== undefined)
@@ -78,8 +88,10 @@ const Elem = (props) => {
     </div>
     <p>{props.Article}</p>
   </div>
-)
-else return (<span></span>);
+  )
+  else return (<span></span>);
 }
-
-export default Catalog;
+Elem.defaultProps = {
+  rules: {},
+}
+export default connect(mapStateToProps)(Catalog);
