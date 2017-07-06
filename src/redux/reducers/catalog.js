@@ -12,10 +12,7 @@ export default function (state = initialState, action) {
       };
     case CATALOG_REQUEST_FINISHED:
       return {
-        loading: false,
-        errors: null,
-        catalog: action.catalog,
-        offset: action.offset
+        search_text: action.data
       };
     case CATALOG_REQUEST_ERROR:
       return {

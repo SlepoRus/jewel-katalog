@@ -21,6 +21,32 @@ module.exports.Jewelry = {
     return axios.delete(`/jewelry/${data.id}`);
   },
 }
+module.exports.historyOrder = {
+  read(data) {
+    const { offset } = data;
+    return axios.get(`/historyOrder/${offset}`);
+  }
+}
+module.exports.Order = {
+  read(data) {
+    const { id,offset } = data;
+    var url = '';
+    if (offset) {
+        url = `?offset=${offset}`;
+    }
+    return axios.get(`/order/${id}${url}`)
+  },
+  create() {
+    return axios.post(`/order/`);
+  },
+  update(data) {
+    return axios.put(`/order/${id}`, data);
+  },
+  delete(data) {
+    const { id } = data;
+    return axios.delete(`/order/${id}`);
+  },
+}
 module.exports.Auth = {
   register(data) {
     return axios.post(`/auth/register`, data);

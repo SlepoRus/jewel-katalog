@@ -22,6 +22,6 @@ const propTypes = {
   name: PropTypes.string,
   type: PropTypes.string,
   value: PropTypes.string,
-  disabled: PropTypes.boolean,
+  disabled: PropTypes.bool,
 }
 Input.propTypes = propTypes;

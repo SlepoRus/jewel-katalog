@@ -7,7 +7,7 @@ import Router from 'react-router-dom/Route';
 import Auth from './Auth';
 import NavLink from 'react-router-dom/NavLink';
 import {Auth as api} from '../api';
-
+import Order from './Order';
 const App = (props) => (
   <div>
     <header>
@@ -15,6 +15,10 @@ const App = (props) => (
       <NavLink activeStyle={{color: '#888'}} to='/catalog'>
         <div>КАТАЛОГ</div>
       </NavLink>
+          <NavLink to='/order'>
+            <div>ЗАКАЗ</div>
+          </NavLink>
+
       <div>ИЗДЕЛИЯ В ЗАКАЗЕ</div>
       <div>ИСТОРИЯ ИЗДЕЛИЙ</div>
       {props.auth.ssid ? (
@@ -32,18 +36,19 @@ const App = (props) => (
       )}
     </header>
     <main>
-      <Rtr />
+      <Rtr {...props}/>
     </main>
   </div>
 )
 const Menu = () => (
   <div>123</div>
 )
-const Rtr = () => (
+const Rtr = (props) => (
   <Switch>
     <Router exact path='/' component={Catalog} />
     <Router exact path='/catalog' component={Catalog} />
-    <Router  path='/auth' component={Auth} />
+        <Router exact path='/order' component={Order} />
+    <Router path='/auth' component={Auth} />
   </Switch>
 )
 export default App;

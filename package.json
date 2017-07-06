@@ -53,6 +53,7 @@
     "less-loader": "^4.0.4",
     "log4js": "^1.1.1",
     "mongoose": "^4.11.0",
+    "mongoose-auto-increment": "^5.0.1",
     "morgan": "^1.8.2",
     "mysql": "^2.13.0",
     "nodemon": "^1.11.0",

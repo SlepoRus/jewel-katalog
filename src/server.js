@@ -61,6 +61,7 @@ app.use((req,res) => {
       ssid: req.session.ssid,
       rules: req.session.rules,
       login: req.session.Login,
+
     }
   }
   var store = configureStore(auth);
